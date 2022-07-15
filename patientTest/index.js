@@ -7,6 +7,8 @@ let resultPoint = 0;
 
 
 if (type !== 'start' && !TEST_RESULTS.includes(type)) {
+
+	window.location = './index.html';
   // window.location.href =  window.location.origin + '/static/patient_test';
 }
 
@@ -18,7 +20,16 @@ if (window.addEventListener) {
   window.onload = windowLoaded;
 }
 
+function getUrlParam(key) {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	return urlParams.get(key);
+}
+
 function windowLoaded() {
+	type = getUrlParam('type') || 'start';
+	console.log('>>>type :', type);
+
   if (type !== 'start') {
     showResult(type);
   }
@@ -57,22 +68,22 @@ function getTestResult(result) {
 
   switch (true) {
     case (result <= 7):
-      testResult = '1';
+      testResult = '5';
       break;
     case (result <= 10):
-      testResult = '2';
+      testResult = '4';
       break;
     case (result <= 13):
       testResult = '3';
       break;
     case (result <= 17):
-      testResult = '4';
+      testResult = '2';
       break;
     case (result >= 18 ):
-      testResult = '5';
+      testResult = '1';
       break;
     default:
-      testResult = '5';
+      testResult = '1';
   }
 
   return testResult;
@@ -94,11 +105,9 @@ function copyPageUrl() {
 }
 
 function goToMain() {
+	window.location = './index.html';
   // const url = window.location.origin + '/static/patient_test';
-
-  window.location = './index.html';
-
-  window.location = url;
+  // window.location = url;
 }
 
 function goToGitpleChat() {
@@ -142,16 +151,13 @@ function setOpenGraph(testResult){
 }
 
 Gitple('onMessage', (message) => {
-
   if (message.type === "resetResult") { // reset point
     resultPoint = Number(message.data.point);
   } else if (message.type === "add") {  // add point
     resultPoint += Number(message.data.point);
   } else if (message.type === "getTestResult") {
-		resultPoint += Number(message.data.point);
     const testResult = getTestResult(resultPoint);
     showResult(testResult);
-
     // window.location = './results/' + testResult + '.html';
     // window.location = window.location.origin + '/static/patient_test/' + testResult;
   }
@@ -166,13 +172,14 @@ function showResult(testResult) {
   }
 
   const resultContainer = document.querySelector('.result-container'),
-    resultImage = document.querySelector('.result-image > img');
-		resultImage.setAttribute('src', './results/images/test_result_' + testResult + '.png');
-//   resultImage.setAttribute('src', window.location.origin + '/static/img/test_result_' + testResult + '.png');
+	resultImage = document.querySelector('.result-image > img');
+	console.log('here',  testResult )
+	resultImage.setAttribute('src', './results/images/test_result_' + testResult + '.png');
+	//   resultImage.setAttribute('src', window.location.origin + '/static/img/test_result_' + testResult + '.png');
   resultContainer.classList.add('show');
 
   const resultText = document.querySelector('.result-' + testResult);
-  resultText.classList.add('show');
+  resultText && resultText.classList.add('show');
 
   Gitple('close');
 }
