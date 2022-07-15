@@ -68,22 +68,22 @@ function getTestResult(result) {
 
   switch (true) {
     case (result <= 7):
-      testResult = '5';
+      testResult = '1';
       break;
     case (result <= 10):
-      testResult = '4';
+      testResult = '2';
       break;
     case (result <= 13):
       testResult = '3';
       break;
     case (result <= 17):
-      testResult = '2';
+      testResult = '4';
       break;
     case (result >= 18 ):
-      testResult = '1';
+      testResult = '5';
       break;
     default:
-      testResult = '1';
+      testResult = '5';
   }
 
   return testResult;
