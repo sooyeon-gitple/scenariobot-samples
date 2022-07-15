@@ -1,0 +1,4 @@
+# Redirects from what the browser requests to what we serve
+/                   /patientText/answers.html   200
+/patient_test       /patientText/index.html
+/sci-fi-movie-quiz  /sciFiMovieQuiz/index.html

@@ -1,0 +1,706 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>SF 영화 퀴즈 해설 페이지</title><style>
+    /* cspell:disable-file */
+    /* webkit printing magic: print all background colors */
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    @media only screen {
+        body {
+            margin: 2em auto;
+            max-width: 900px;
+            color: rgb(55, 53, 47);
+        }
+    }
+
+    body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+    }
+
+    a,
+    a.visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    .pdf-relative-link-path {
+        font-size: 80%;
+        color: #444;
+    }
+
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-top: 1.25rem;
+    }
+
+    .source {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 1.5em;
+        word-break: break-all;
+    }
+
+    .callout {
+        border-radius: 3px;
+        padding: 1rem;
+    }
+
+    figure {
+        margin: 1.25em 0;
+        page-break-inside: avoid;
+    }
+
+    figcaption {
+        opacity: 0.5;
+        font-size: 85%;
+        margin-top: 0.5em;
+    }
+
+    mark {
+        background-color: transparent;
+    }
+
+    .indented {
+        padding-left: 1.5em;
+    }
+
+    hr {
+        background: transparent;
+        display: block;
+        width: 100%;
+        height: 1px;
+        visibility: visible;
+        border: none;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    @media only print {
+        img {
+            max-height: 100vh;
+            object-fit: contain;
+        }
+    }
+
+    @page {
+        margin: 1in;
+    }
+
+    .collection-content {
+        font-size: 0.875rem;
+    }
+
+    .column-list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        padding: 0 1em;
+    }
+
+    .column:first-child {
+        padding-left: 0;
+    }
+
+    .column:last-child {
+        padding-right: 0;
+    }
+
+    .table_of_contents-item {
+        display: block;
+        font-size: 0.875rem;
+        line-height: 1.3;
+        padding: 0.125rem;
+    }
+
+    .table_of_contents-indent-1 {
+        margin-left: 1.5rem;
+    }
+
+    .table_of_contents-indent-2 {
+        margin-left: 3rem;
+    }
+
+    .table_of_contents-indent-3 {
+        margin-left: 4.5rem;
+    }
+
+    .table_of_contents-link {
+        text-decoration: none;
+        opacity: 0.7;
+        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid rgba(55, 53, 47, 0.09);
+        border-collapse: collapse;
+    }
+
+    table {
+        border-left: none;
+        border-right: none;
+    }
+
+    th,
+    td {
+        font-weight: normal;
+        padding: 0.25em 0.5em;
+        line-height: 1.5;
+        min-height: 1.5em;
+        text-align: left;
+    }
+
+    th {
+        color: rgba(55, 53, 47, 0.6);
+    }
+
+    ol,
+    ul {
+        margin: 0;
+        margin-block-start: 0.6em;
+        margin-block-end: 0.6em;
+    }
+
+    li > ol:first-child,
+    li > ul:first-child {
+        margin-block-start: 0.6em;
+    }
+
+    ul > li {
+        list-style: disc;
+    }
+
+    ul.to-do-list {
+        text-indent: -1.7em;
+    }
+
+    ul.to-do-list > li {
+        list-style: none;
+    }
+
+    .to-do-children-checked {
+        text-decoration: line-through;
+        opacity: 0.375;
+    }
+
+    ul.toggle > li {
+        list-style: none;
+    }
+
+    ul {
+        padding-inline-start: 1.7em;
+    }
+
+    ul > li {
+        padding-left: 0.1em;
+    }
+
+    ol {
+        padding-inline-start: 1.6em;
+    }
+
+    ol > li {
+        padding-left: 0.2em;
+    }
+
+    .mono ol {
+        padding-inline-start: 2em;
+    }
+
+    .mono ol > li {
+        text-indent: -0.4em;
+    }
+
+    .toggle {
+        padding-inline-start: 0em;
+        list-style-type: none;
+    }
+
+    /* Indent toggle children */
+    .toggle > li > details {
+        padding-left: 1.7em;
+    }
+
+    .toggle > li > details > summary {
+        margin-left: -1.1em;
+    }
+
+    .selected-value {
+        display: inline-block;
+        padding: 0 0.5em;
+        background: rgba(206, 205, 202, 0.5);
+        border-radius: 3px;
+        margin-right: 0.5em;
+        margin-top: 0.3em;
+        margin-bottom: 0.3em;
+        white-space: nowrap;
+    }
+
+    .collection-title {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .simple-table {
+        margin-top: 1em;
+        font-size: 0.875rem;
+        empty-cells: show;
+    }
+    .simple-table td {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table th {
+        height: 29px;
+        min-width: 120px;
+    }
+
+    .simple-table-header-color {
+        background: rgb(247, 246, 243);
+        color: black;
+    }
+    .simple-table-header {
+        font-weight: 500;
+    }
+
+    time {
+        opacity: 0.5;
+    }
+
+    .icon {
+        display: inline-block;
+        max-width: 1.2em;
+        max-height: 1.2em;
+        text-decoration: none;
+        vertical-align: text-bottom;
+        margin-right: 0.5em;
+    }
+
+    img.icon {
+        border-radius: 3px;
+    }
+
+    .user-icon {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 100%;
+        margin-right: 0.5rem;
+    }
+
+    .user-icon-inner {
+        font-size: 0.8em;
+    }
+
+    .text-icon {
+        border: 1px solid #000;
+        text-align: center;
+    }
+
+    .page-cover-image {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+        max-height: 30vh;
+    }
+
+    .page-header-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-header-icon-with-cover {
+        margin-top: -0.72em;
+        margin-left: 0.07em;
+    }
+
+    .page-header-icon img {
+        border-radius: 3px;
+    }
+
+    .link-to-page {
+        margin: 1em 0;
+        padding: 0;
+        border: none;
+        font-weight: 500;
+    }
+
+    p > .user {
+        opacity: 0.5;
+    }
+
+    td > .user,
+    td > time {
+        white-space: nowrap;
+    }
+
+    input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
+
+    p {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .image {
+        border: none;
+        margin: 1.5em 0;
+        padding: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    .code,
+    code {
+        background: rgba(135, 131, 120, 0.15);
+        border-radius: 3px;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 85%;
+        tab-size: 2;
+    }
+
+    code {
+        color: #eb5757;
+    }
+
+    .code {
+        padding: 1.5em 1em;
+    }
+
+    .code-wrap {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    .code > code {
+        background: none;
+        padding: 0;
+        font-size: 100%;
+        color: inherit;
+    }
+
+    blockquote {
+        font-size: 1.25em;
+        margin: 1em 0;
+        padding-left: 1em;
+        border-left: 3px solid rgb(55, 53, 47);
+    }
+
+    .bookmark {
+        text-decoration: none;
+        max-height: 8em;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .bookmark-title {
+        font-size: 0.85em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 1.75em;
+        white-space: nowrap;
+    }
+
+    .bookmark-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bookmark-info {
+        flex: 4 1 180px;
+        padding: 12px 14px 14px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .bookmark-image {
+        width: 33%;
+        flex: 1 1 180px;
+        display: block;
+        position: relative;
+        object-fit: cover;
+        border-radius: 1px;
+    }
+
+    .bookmark-description {
+        color: rgba(55, 53, 47, 0.6);
+        font-size: 0.75em;
+        overflow: hidden;
+        max-height: 4.5em;
+        word-break: break-word;
+    }
+
+    .bookmark-href {
+        font-size: 0.75em;
+        margin-top: 0.25em;
+    }
+
+    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+    .highlight-default {
+        color: rgba(55, 53, 47, 1);
+    }
+    .highlight-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .highlight-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .highlight-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .highlight-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .highlight-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .highlight-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .highlight-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .highlight-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .highlight-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .highlight-gray_background {
+        background: rgba(241, 241, 239, 1);
+    }
+    .highlight-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .highlight-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .highlight-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .highlight-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .highlight-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .highlight-purple_background {
+        background: rgba(244, 240, 247, 0.8);
+    }
+    .highlight-pink_background {
+        background: rgba(249, 238, 243, 0.8);
+    }
+    .highlight-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .block-color-default {
+        color: inherit;
+        fill: inherit;
+    }
+    .block-color-gray {
+        color: rgba(120, 119, 116, 1);
+        fill: rgba(120, 119, 116, 1);
+    }
+    .block-color-brown {
+        color: rgba(159, 107, 83, 1);
+        fill: rgba(159, 107, 83, 1);
+    }
+    .block-color-orange {
+        color: rgba(217, 115, 13, 1);
+        fill: rgba(217, 115, 13, 1);
+    }
+    .block-color-yellow {
+        color: rgba(203, 145, 47, 1);
+        fill: rgba(203, 145, 47, 1);
+    }
+    .block-color-teal {
+        color: rgba(68, 131, 97, 1);
+        fill: rgba(68, 131, 97, 1);
+    }
+    .block-color-blue {
+        color: rgba(51, 126, 169, 1);
+        fill: rgba(51, 126, 169, 1);
+    }
+    .block-color-purple {
+        color: rgba(144, 101, 176, 1);
+        fill: rgba(144, 101, 176, 1);
+    }
+    .block-color-pink {
+        color: rgba(193, 76, 138, 1);
+        fill: rgba(193, 76, 138, 1);
+    }
+    .block-color-red {
+        color: rgba(212, 76, 71, 1);
+        fill: rgba(212, 76, 71, 1);
+    }
+    .block-color-gray_background {
+        background: rgba(241, 241, 239, 1);
+    }
+    .block-color-brown_background {
+        background: rgba(244, 238, 238, 1);
+    }
+    .block-color-orange_background {
+        background: rgba(251, 236, 221, 1);
+    }
+    .block-color-yellow_background {
+        background: rgba(251, 243, 219, 1);
+    }
+    .block-color-teal_background {
+        background: rgba(237, 243, 236, 1);
+    }
+    .block-color-blue_background {
+        background: rgba(231, 243, 248, 1);
+    }
+    .block-color-purple_background {
+        background: rgba(244, 240, 247, 0.8);
+    }
+    .block-color-pink_background {
+        background: rgba(249, 238, 243, 0.8);
+    }
+    .block-color-red_background {
+        background: rgba(253, 235, 236, 1);
+    }
+    .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+    .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+    .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+    .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+    .select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+    .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+    .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+    .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+    .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+    .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+    .checkbox {
+        display: inline-flex;
+        vertical-align: text-bottom;
+        width: 16;
+        height: 16;
+        background-size: 16px;
+        margin-left: 2px;
+        margin-right: 5px;
+    }
+
+    .checkbox-on {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    .checkbox-off {
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+    }
+
+    </style></head><body><article id="06641ae2-759e-48bb-8f8f-3958af30f4f5" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/nasa_bruce_mccandless_spacewalk.jpg" style="object-position:center 36.629999999999995%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🎬</span></div><h1 class="page-title">SF 영화 퀴즈 해설 페이지</h1></header><div class="page-body"><p id="afcb668f-6ea3-4eab-b333-651be94d42fe" class="">
+    </p><p id="16067e41-d966-4936-ab16-1ec4de82b041" class=""><strong><a href="https://api-sample.gitple.io/static/sci-fi-movie-quiz">지옥급으로 어려운 SF 영화 퀴즈</a></strong><strong>를 풀고 해설을 찾아 오셨나요!?</strong></p><p id="784545db-9e4d-49cf-90df-e6e0ef94a669" class=""><strong>아래에 1번부터 20번까지 퀴즈 해설을 확인해 보세요.</strong></p><p id="bcfee132-3582-44bd-b019-c63cef376161" class="">
+    </p><p id="0d8158d6-03ca-4f66-9fb3-6bab1a8290b7" class="block-color-teal">이 퀴즈는 고객상담솔루션 <a href="https://gitple.io/?utm_source=SCIFIQUIZ&amp;utm_medium=homepage_link&amp;utm_campaign=Inside&amp;utm_content=220704_scifiquiz&amp;utm_term=answers">깃플챗</a>으로 제작하였습니다.</p><p id="346370b5-5f75-4d8e-bae6-8cf6502b44df" class="">
+    </p><hr id="97829734-2e1b-441d-b368-720ca5e8294c"/><h1 id="7d49999c-bd89-47b5-8325-cf74a2a6c7cd" class="">Q1.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="779d45fc-870d-4391-b753-a2d330206e46"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  삶, 우주, 그리고 모든 것에 대한 궁극적인 질문에 대한 해답</strong>은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  42</strong></div></figure><p id="63dab3a2-6ca7-4157-903f-4beaad8ee049" class="">이 문제는 &lt;은하수를 여행하는 히치하이커를 위한 안내서&gt;(2005)를 봤다면 맞출 수 있는 문제입니다. 고도로 지능이 발달한 종족이 삶, 우주, 그리고 모든 것에 대한 해답을 얻기 위해 전 우주에서 둘째가는 슈퍼컴퓨터인 “깊은 생각(Deep Thought)”을 만들었고, “깊은 생각”이 750만년 동안 계산한 결과 나온 답이 42입니다.</p><p id="1def116f-2c68-48ad-a0bd-9bafc652c777" class="">해답을 오랫동안 기다려온 전 우주인들은 이 대답에 어이없어 했고, 이에 “깊은 생각”은 삶, 우주, 그리고 모든 것에 대한 질문을 모르기 때문에 해답을 이해할 수 없는 것이라고 이야기합니다.</p><p id="d184c909-2427-4572-becd-e19c51a6c354" class="">그래서 이 삶, 우주, 그리고 모든 것에 대한 궁극적인 질문을 이해하기 위해, “깊은 생각&quot;이 직접 설계한 전 우주에서 첫째가는 컴퓨터인 지구를 만들게 되죠.</p><hr id="aa6114b9-6a34-4ba3-9783-2a1f7d3ee733"/><h1 id="809f14d3-4e42-4f6f-8965-0496ceb4d7e6" class="">Q2.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="d8160a14-3f9f-4ba4-a42f-cce89e53c855"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;스타워즈&gt; 시리즈</strong> 순서에 대한 내용 중 <span style="border-bottom:0.05em solid"><strong>사실과 다른 것</strong></span>을 하나 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  </strong>극장판 &lt;스타워즈: 클론 전쟁&gt;(2008)은 에피소드 1과 에피소드 2 사이의 이야기를 다룬다.</div></figure><p id="6b9399ac-de8c-45ee-9128-cdca710c1360" class="">&lt;스타 워즈: 클론 전쟁&gt;(2008)은 에피소드 2와 에피소드 3 사이의 이야기를 다룹니다.</p><hr id="15a14588-99e4-4e3c-8871-d9d0825a1f32"/><h1 id="7139b6fc-e551-4234-aecb-6862a4f4f576" class="">Q3.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="dd5f77f5-1e12-453e-b44d-37b522ef305d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>다음 중 <strong>리부트 또는 리메이크, 스핀오프</strong> 된 적이 <span style="border-bottom:0.05em solid"><strong>없는</strong></span> 영화를 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  퍼시픽 림</strong></div></figure><ul id="e77aabf9-d15b-45bc-be95-82fe14632419" class="bulleted-list"><li style="list-style-type:disc">혹성탈출 시리즈는 1968년부터 1973년까지 5부작으로 영화가 제작되었으며, 2001년에 리메이크 1편, 2011년부터 2017년까지 리부트 시리즈 3편이 개봉되었습니다.</li></ul><ul id="960c39ec-b64b-42a9-b99b-04162f6117e9" class="bulleted-list"><li style="list-style-type:disc">&lt;토탈 리콜&gt;은 1990년에 원작이 개봉하고 2012년에 리메이크작이 개봉하였습니다.</li></ul><ul id="7aca680b-1f8f-4d5b-9f92-e4acc5120bc5" class="bulleted-list"><li style="list-style-type:disc">스타 트렉은 다양한 TV 드라마, 애니메이션, 영화 시리즈가 있습니다.</li></ul><hr id="b002b061-f49f-40a3-a24a-7db06b1a6eea"/><h1 id="1e938b05-af52-4d03-912b-714824879ffc" class="">Q4.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="9b7bb763-821e-4318-874a-5efca62e74c7"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>다음 중 <strong>복제인간 또는 인조인간 </strong>이 등장하는 영화가 <span style="border-bottom:0.05em solid"><strong>아닌</strong></span> 것은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  애드 아스트라 (2019)</strong></div></figure><ul id="cf88726e-5e90-4812-a94e-3b5f9795ca36" class="bulleted-list"><li style="list-style-type:disc">&lt;스타워즈&gt; 시리즈에 등장하는 은하 공화국의 스톰트루퍼 대부분은 ‘장고 펫&#x27;을 모델로 한 복제 인간 군대입니다.</li></ul><ul id="9c9e3035-dce0-4e86-b41e-7a4041aed4f7" class="bulleted-list"><li style="list-style-type:disc">&lt;6번째 날&gt;은 복제 인간을 주제로 한 영화입니다.</li></ul><ul id="b6f6ca46-dbf5-409c-8a55-8977b3e6163e" class="bulleted-list"><li style="list-style-type:disc">&lt;오블리비언&gt;의 주인공은 복제 인간입니다.</li></ul><hr id="208560f7-300b-4039-95d6-54f7b93343ec"/><h1 id="2db1cd83-6a54-4988-8812-fe27bd767bd6" class="">Q5.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="47d81651-9689-43cd-9690-882060cd991e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>영화 <strong>&lt;그래비티&gt;(2013)</strong>에 등장하는 기체가 <span style="border-bottom:0.05em solid"><strong>아닌</strong></span> 것은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  오리온 우주선</strong></div></figure><ul id="a2d1b3b2-135c-4735-83f4-68d42239ba99" class="bulleted-list"><li style="list-style-type:disc">&lt;그래비티&gt;는 러시아가 자국 인공위성을 미사일로 폭파시키면서, 그 파편이 우주왕복선, 국제우주정거장(ISS), 중국의 톈궁 우주 정거장에 피해를 입혔습니다.</li></ul><ul id="a9e0c888-a647-4d41-b54d-f0fa935591dc" class="bulleted-list"><li style="list-style-type:disc">주인공은 ISS에서 톈궁 우주 정거장으로 이동할 때 소유즈 우주선을 사용합니다.</li></ul><ul id="8f14aa2f-a3ff-4a91-965b-ff8528b9aea3" class="bulleted-list"><li style="list-style-type:disc">오리온 우주선은 NASA에서 개발 중인 우주선입니다.</li></ul><hr id="4d2798b3-17fd-4fe1-b30a-3992958ecead"/><h1 id="be4205bc-ada4-4c10-8c37-7d3473c09287" class="">Q6.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="3363d1fd-e18f-469b-af1e-1f419c4249f6"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  냉동 수면</strong> 기술이 등장하는 영화가 <span style="border-bottom:0.05em solid"><strong>아닌</strong></span> 것은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  제5원소 (1997)</strong></div></figure><ul id="a76cf6d9-ed9d-4bc6-b8d0-20d8839b9cb7" class="bulleted-list"><li style="list-style-type:disc">&lt;데몰리션 맨&gt;은 냉동 수면으로 잠들어 있던 경찰과 범죄자가 미래에 다시 만나 겨루는 이야기 입니다.</li></ul><ul id="487ba8f8-9ce1-4b03-b49c-691c6406a68c" class="bulleted-list"><li style="list-style-type:disc">&lt;퍼스트 어벤져&gt;의 캡틴 아메리카는 빙하 속에서 70년 동안 잠들어 있었습니다.</li></ul><ul id="0dc2b120-1b7b-4350-89c7-b1d6f65c5836" class="bulleted-list"><li style="list-style-type:disc">&lt;패신저스&gt;는 120년 동안 우주를 여행해야하는 냉동 수면에서 혼자 일찍 깨어난 주인공이 겪는 이야기 입니다.</li></ul><hr id="3d2d0496-bd6f-4d8c-b9ec-5ee93da09d1c"/><h1 id="f377d4ca-ac4b-4e8a-9137-7a340ecbbeee" class="">Q7.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="557ca96f-f599-4afa-b271-33e3f1de8033"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;은하수를 여행하는 히치하이커를 위한 안내서&gt;(2005)</strong>에 등장하는 <strong>우주에서 둘째가는 컴퓨터의 이름</strong>은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  깊은 생각 (Deep Thought)</strong></div></figure><ul id="733bb9ae-2187-4c25-821b-6816ce30bb7d" class="bulleted-list"><li style="list-style-type:disc">문제 1번에서 설명했듯, 고도로 지능이 발달한 종족이 삶, 우주, 그리고 모든 것에 대한 해답을 얻기 위해 만든 컴퓨터의 이름입니다.</li></ul><ul id="09fcbdea-6730-402c-88e5-c7465bdcaa1d" class="bulleted-list"><li style="list-style-type:disc">영화 속에서 등장하는 우주에서 첫째 가는 컴퓨터는 지구입니다.</li></ul><hr id="5b196eb5-7ca4-4dc6-ac44-07dd9c5e1100"/><h1 id="cd450a5a-e8e9-4f74-aa45-9680c750da59" class="">Q8.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="97d5933a-688a-4b84-97dc-ff2a976f4b36"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;월-E&gt;(2008)</strong>에 등장하는 거대 우주선 액시엄 호의 인공지능인 <strong>오토(Auto)는 유명한 악역 인공지능을 오마주</strong>한 것입니다. 무엇을 오마주한 것일까요?<strong>
+    </strong><code><strong>정답</strong></code><strong>  HAL 9000</strong></div></figure><ul id="dcdebb77-39c7-4b16-92dc-2889b2f08b40" class="bulleted-list"><li style="list-style-type:disc">&lt;월-E&gt;에 등장하는 오토는 인간을 배신한다는 스토리 설정과 붉은색 램프의 디자인까지 모두 &lt;2001 스페이스 오디세이&gt;에 등장하는 인공 지능 컴퓨터 HAL 9000을 오마주하였습니다.</li></ul><ul id="74744454-3081-43f0-8c53-e803bfd1f82d" class="bulleted-list"><li style="list-style-type:disc">스카이넷은 터미네이터 시리즈에 등장하는 인공지능의 이름입니다.</li></ul><ul id="c14af238-789c-4f91-868b-f28f78117bd4" class="bulleted-list"><li style="list-style-type:disc">GLaDOS는 유명한 게임 &lt;Portal&gt; 시리즈에 등장하는 인공지능 캐릭터입니다.</li></ul><ul id="2103aeb2-a021-4fe7-9625-4ed8e3d16f2a" class="bulleted-list"><li style="list-style-type:disc">스미스 요원은 &lt;매트릭스&gt; 시리즈에 등장하는, 매트리스 속 인간을 잡는 컴퓨터 프로그램입니다.</li></ul><p id="d753aa2e-19f2-4050-9d33-41b8edd91e50" class="">
+    </p><hr id="ce88291f-655c-418d-9795-4542e1e319d4"/><h1 id="639ad23c-8354-4a44-ba5c-5ced07d20be1" class="">Q9.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="3ff057a4-0b8b-4e90-bd17-9ae8ab361e17"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;블레이드 러너&gt;(1982)</strong>의 감독판에 추가되어 논란이 되었던 장면이 있습니다. 주인공인 릭 데커드(해리슨 포드 扮)가 떠올렸던 동물을 그의 동료인 에두아르도 개프(에드워드 제임스 올모스 扮)가 종이로 접어 만든 걸 발견하는 장면인데요, <span style="border-bottom:0.05em solid"><strong>릭 데커드가 떠올렸던 동물은 무엇</strong></span>일까요?<strong>
+    </strong><code><strong>정답</strong></code><strong>  유니콘</strong></div></figure><p id="1b3303cf-3336-4c58-b9eb-d4aba70d4256" class="">영화를 보았다면 맞출 수 있는 문제입니다.</p><p id="034c23f2-5692-4e80-b441-b73a3aef777e" class="">
+    </p><hr id="3d801141-6fb8-4df8-afee-515314b6a07d"/><h1 id="f74c71c7-02a6-4129-9872-a2d07944bfb7" class="">Q10.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="95234445-b8e3-4ce8-a0bf-f9b7ff7c5ee9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  영화 &lt;엘리시움&gt;(2013)</strong>에 등장하는 방위산업체 사장 존 칼라일 사장(윌리엄 피크너 扮)은 <strong>빨간색 셔틀</strong>을 타고 비행하던 중, 주인공인 맥스 다 코스타(맷 데이먼 扮)의 일행에게 습격을 당합니다. 이 빨간색 셔틀은 유명한 자동차 회사가 영화를 위해 직접 디자인한 것으로 유명한데요, 이 <strong>자동차 회사의 이름</strong>은 무엇일까요?<strong>
+    </strong><code><strong>정답</strong></code><strong>  부가티</strong></div></figure><p id="34cf2e7f-1c34-4ed6-be97-85188834e9d6" class="">영화 속에 등장하는 기체는 부가티 베이론을 모델로 한 셔틀입니다.</p><p id="13644199-8a9c-40fb-b4af-1dd4ab69620b" class="">
+    </p><hr id="80c107ca-4ff5-4f4c-ae63-31e4f7a3a72e"/><h1 id="531c6263-9f54-4dc7-b511-0fdcdf36dca9" class="">Q11.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="e979c279-3b98-4ed8-8431-c406bb906761"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  영화 &lt;그래비티&gt;(2013)</strong>와 관련된 <span style="border-bottom:0.05em solid"><strong>사실과 다른 것을 하나</strong></span> 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  주인공이 타고 간 기체인 우주왕복선은 현재도 국제우주정거장을 오가며 임무를 수행 중이다.</strong></div></figure><p id="30d4a9a5-617f-4de6-8f91-fc64594875d9" class="">우주왕복선은 2011년 임무를 마지막으로 퇴역하였습니다.</p><p id="9ba6fd5d-0d28-4b68-808f-0134d0bf931a" class="">
+    </p><hr id="955238de-fe90-42f1-a21a-9e0a209ff3eb"/><h1 id="ad4ceede-f946-4202-9ffb-d1c307b4b037" class="">Q12.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="d4cd97be-a7ca-449a-9dcf-ed63bc55455a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  스티븐 스필버그 감독</strong>의 영화가 <span style="border-bottom:0.05em solid"><strong>아닌 것을 하나</strong></span> 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  아이, 로봇 (2004)</strong></div></figure><p id="71cb2f0a-41a4-4745-b23a-864290017241" class="">&lt;아이, 로봇&gt;은 알렉스 프로야스가 감독을 맡았습니다.</p><p id="c83c2057-890b-4125-9e7d-080d061af64a" class="">
+    </p><hr id="b55f9dda-87d1-4175-aa01-cd9e8129a3b6"/><h1 id="8ec2eb1b-309a-4570-8c35-8c3c986fde49" class="">Q13.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="1bef5505-0a64-4b21-b3f8-c054b0e511d4"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  제임스 카메론</strong>이 연출한 영화가 <span style="border-bottom:0.05em solid"><strong>아닌 것을 하나</strong></span> 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  프로메테우스 (2012)</strong></div></figure><p id="9cbc1c63-8297-4aec-a2ec-ebcaf1a5c529" class="">&lt;프로메테우스&gt;는 리들리 스콧이 감독을 맡았습니다.</p><p id="66c7faff-0c7a-41b2-b85d-14267d113042" class="">
+    </p><hr id="999b7f71-9d2f-4537-ab7d-4a2bfca96748"/><h1 id="06166eea-ac76-4e20-9244-15bb67689d30" class="">Q14.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="58153a10-6463-4b5e-8dda-e1781c521c8f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;에이리언&gt;</strong>의 각 시리즈와 <span style="border-bottom:0.05em solid"><strong>감독이 잘못 짝지어진 것</strong></span>을 하나 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  알폰소 쿠아론의 &lt;에이리언 4&gt;</strong></div></figure><p id="4d4a9237-e441-4d28-afe5-11cce61e7e17" class="">&lt;에이리언 4&gt;는 장피에르 죄네가 감독하였습니다.</p><p id="df6b794a-2c38-4652-b7fb-f3810d872acc" class="">
+    </p><hr id="96803b26-72e3-42ba-99d5-7739a6b405d5"/><h1 id="7252f424-22a2-4268-afbc-af9983647754" class="">Q15.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="b64074ab-93a8-4357-9ec5-c9358020f62b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>다음 중 <strong>한스 짐머</strong>가 음악 감독을 맡지 <span style="border-bottom:0.05em solid"><strong>않은</strong></span> 영화를 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  컨택트 (2016)</strong></div></figure><p id="d7411c30-0729-456b-804e-c1af272c5fce" class="">&lt;컨택트&gt;의 음악 감독은 요한 요한손입니다.</p><p id="587adb7b-d0a6-4c1a-b946-bf7631b5f2d1" class="">
+    </p><hr id="cf78b62d-a31e-468a-9d08-4c86cd9248ae"/><h1 id="f414c9e5-f5de-4144-aa0f-d0505659e8c4" class="">Q16.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="c33b5aac-a013-4801-b7cc-e58f986065c2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;2001 스페이스 오딧세이&gt;(1968)</strong>는 유명한 고전 작곡가들의 음악을 활용한 것으로 유명합니다. 이 영화에 등장하는 곡이 <span style="border-bottom:0.05em solid"><strong>아닌</strong></span> 것을 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  루트비히 판 베토벤의 「합창」</strong></div></figure><p id="dc0e1791-36cd-4773-8800-c765d4f38a53" class="">루트비히 판 베토벤의 「합창」은 같은 감독의 다른 영화 &lt;시계태엽 오렌지&gt;(1971)에서 주요한 역할을 합니다.</p><p id="2f3294b6-ff9f-4ba9-a49a-fb0e83730fff" class="">
+    </p><hr id="1c5c5d2a-0920-4fe3-aac1-97cb73768b23"/><h1 id="79884f4f-dc43-4e6d-8b05-ccbb49be624c" class="">Q17.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="9d48783e-cbfd-4971-bdc8-bc3ebfe9c9de"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>다음 중 <span style="border-bottom:0.05em solid"><strong>틀린 것</strong></span>을 하나 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  영화 &lt;마이너리티 리포트&gt;(2002)의 원작 소설 작가는 아이작 아시모프다.</strong></div></figure><p id="0f204a85-f0c4-4d48-9929-6f8f44a9f969" class="">&lt;마이너리티 리포트&gt;의 원작은 동명의 소설로, 필립 K. 딕이 썼습니다.</p><p id="3c0870cd-b658-47a7-9f7b-42313ae110c7" class="">
+    </p><hr id="8a372fc2-c71d-4f21-9dff-86a8bb7b3fe5"/><h1 id="351d2e86-cc44-4449-aeb9-9b684befb324" class="">Q18.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="9b6df7f1-e454-4351-884e-e5a509884b6b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  영화 &lt;마션&gt;(2015)</strong>에서 리치 퍼넬(도널드 글로버 扮)이 궤도를 계산하기 위해 NASA의 슈퍼컴퓨터를 이용하는 장면이 나옵니다. 이 <span style="border-bottom:0.05em solid"><strong>슈퍼컴퓨터 이름</strong></span>은 무엇인가?<strong>
+    </strong><code><strong>정답</strong></code><strong>  플레이아데스</strong></div></figure><p id="d752f3fc-e1c8-4212-881e-165cbf572f68" class="">영화를 봤다면 알 수 있는 내용입니다. 플레이아데스는 영화 속 뿐만 아니라 실제로 NASA에서 사용하는 슈퍼컴퓨터입니다.</p><p id="e49dbdc6-bd07-4821-93d6-1aa5ebf6a92d" class="">
+    </p><hr id="fc57955a-aad1-48a7-9d66-856a829af201"/><h1 id="a534f6b3-51a9-43aa-8fcd-346be506b341" class="">Q19.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="053a4f83-5783-473c-8359-6f1ffd244191"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  </strong>다음 중 원작 소설의 작가가 <span style="border-bottom:0.05em solid"><strong>다른</strong></span> 영화 하나를 고르시오.<strong>
+    </strong><code><strong>정답</strong></code><strong>  바이센테니얼 맨 (1990)</strong></div></figure><p id="ce66a134-30dc-4c08-8084-559847f60735" class="">&lt;블레이드 러너&gt;은 『안드로이드는 전기양의 꿈을 꿈꾸는가?』를 원작으로, &lt;페이첵&gt;, &lt;컨트롤러&gt;는 모두 동명의 소설을 원작으로 하며 이 소설들의 작가는 필립 K. 딕 입니다.</p><p id="c2064569-81f7-44bf-b102-4285c8e9ec6d" class="">&lt;바이센테니얼 맨&gt;은 아이작 아시모프의 소설 『이백살을 맞은 사나이』를 원작으로 합니다.</p><p id="b366430d-bbc5-4497-8cf2-3346912e0245" class="">
+    </p><hr id="41d7f2a9-616d-4313-a3ae-689aaeee0894"/><h1 id="91c9847e-793d-4f65-bb10-f9b2aac88065" class="">Q20.</h1><figure class="block-color-teal_background callout" style="white-space:pre-wrap;display:flex" id="2d3b68e3-b6e6-47dc-8640-40f5a22ba398"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><code><strong>문제</strong></code><strong>  &lt;매트릭스&gt;(1999)</strong> 영화 초반부에 네오(키아누 리브스 扮)가 <strong>어떤 책</strong>의 안쪽을 파내어 각종 프로그램이 저장된 디스켓을 보관해두는 장면이 나옵니다. 이 책은 영화 전반의 주제를 암시하기도 하죠. <span style="border-bottom:0.05em solid"><strong>이책을 쓴 작가의 이름</strong></span>은?<strong>
+    </strong><code><strong>정답</strong></code><strong>  장 보드리야르</strong></div></figure><p id="d44a4999-3e2a-4223-b6db-b3619263e652" class="">영화 속에 등장하는 책의 이름은 『시뮬라크르 시뮬라시옹』입니다.</p><p id="591ad4ff-16a5-4494-8256-f6d29a4495d1" class="">
+    </p><hr id="fb68862b-b833-487a-a0ef-ff2cbb6df3e1"/><p id="dcf3ee89-8bab-4215-b873-75980d965829" class="">
+    </p></div></article></body></html>
