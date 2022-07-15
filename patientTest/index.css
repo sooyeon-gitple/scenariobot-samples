@@ -1,0 +1,149 @@
+
+*{
+  box-sizing: border-box;
+}
+
+.bad-customer-main{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  position: absolute;
+  background-color: #F4F2F0;
+}
+
+.bad-customer-container{
+  max-width: 780px;
+  /* width: 50%; */
+  margin: 0 auto;
+}
+
+/* bad-customer-start */
+.bad-customer-start{
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+}
+
+.bad-customer-start-img > img,
+.result-image > img{
+  width: 100%;
+  border: 7px solid #675b41;
+  border-radius: 10px;
+}
+
+.start-btn-container{
+  margin: 0 auto;
+}
+
+.result-container-btns{
+  margin-top: 20px !important;
+  margin-bottom: 60px;
+}
+
+.start-btn,
+.url-copy-btn,
+.re-start-btn{
+  padding: 10px 30px;
+  border: 3px solid #3a3323;
+  border-radius: 300px;
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  background: #ffd525;
+  white-space: nowrap;
+}
+
+.url-copy-btn,
+.re-start-btn{
+  width: 215px;
+}
+
+.start-btn:hover,
+.url-copy-btn:hover,
+.re-start-btn:hover,
+.start-btn:focus,
+.url-copy-btn:focus,
+.re-start-btn:focus{
+  color: black;
+  background: #ffd525;
+  border: 3px solid #3a3323;
+}
+
+.start-btn-icon{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+}
+
+/* result-container */
+.result-container{
+  display: none;
+}
+
+.result-container.show{
+  /* height: 100%; */
+  display: flex;
+  padding: 40px 50px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #faedd1;
+}
+
+/* result-image */
+.result-image{
+  width: 468px;
+  height: 468px;
+}
+
+.result-image > img{
+  width: 100%;
+}
+
+/* result-text */
+.result-text{
+  padding-top: 60px;
+}
+
+.sub-result-text{
+  display: none;
+}
+
+.sub-result-text.show{
+  display: block;
+}
+
+.ws-link-btn{
+  padding: 10px 30px;
+  margin-top: 25px !important;
+  border: 3px solid #ffd525;
+  border-radius: 300px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffd525;
+  background-color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ws-link-btn:hover{
+  color: #ffd525;
+}
+
+/* mediaQuery */
+@media (max-width: 660px) {
+  .bad-customer-container{
+    max-width: 90%;
+  }
+  .result-image{
+    width: 280px;
+    height: 280px;
+  }
+}
