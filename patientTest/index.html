@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="<%= ogUrl %>"/>
+    <!-- <meta property="og:url" content="<%= ogUrl %>"/>
     <meta property="og:title" content="<%= ogTitle %>"/>
     <meta property="og:image" content="<%= ogImg %>"/>
-    <meta property="og:description" content="<%= ogDesc %>"/>
+    <meta property="og:description" content="<%= ogDesc %>"/> -->
     <meta property="og:site_name" content="인내력 테스트"/>
     <meta property="og:locale" content="en_US"/>
     <!-- favicon -->
@@ -85,14 +85,15 @@
                   <!-- </button>
                 <% }%> -->
                 <button
+									id="tryTestButton"
                   class="re-start-btn btn btn-primary mt-4"
                   type="button"
                   onclick="javascript:goToMain();">
-                    <!-- <% if (!isShare) { %> -->
+                    <!-- <% if (!isShare) { %>
                       다시 테스트 하기
-                    <!-- <% } else { %> -->
+                    <% } else { %>
                       나도 테스트 해보기
-                    <!-- <% }%> -->
+                    <% }%> -->
                 </button>
               </div>
               <div class="pt-3">
