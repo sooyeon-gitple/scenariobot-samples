@@ -223,6 +223,8 @@ function showResult(testResult) {
   const testButton = document.getElementById('tryTestButton');
   if (isShared) {
     testButton.innerText = ' 나도 테스트 해보기'
+    const shareButton = document.getElementById('shareTestButton');
+    shareButton.style.display = 'none';
   } else {
     testButton.innerText = '다시 테스트 하기'
   }
@@ -260,7 +262,7 @@ const getOpenGraphText = (id /*: string = ''*/) => {
   console.log('>>>DDD',id)
 
   const baseSrc =  './results/images';//'https://api-sample.gitple.io/static/img',
-        baseUrl =  './results';//'https://api-sample.gitple.io/static/patient_test';
+        baseUrl =  window.location.origin + window.location.pathname; //'./results';//'https://api-sample.gitple.io/static/patient_test';
 
   switch(id) {
     case '1':
