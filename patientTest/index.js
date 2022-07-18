@@ -167,10 +167,14 @@ function setOpenGraphContents() {
   metaDescription.setAttribute('property', 'og:description')
   metaDescription.setAttribute('content', ogDesc);
 
-  head.appendChild(metaUrl);
-  head.appendChild(metaTitle);
-  head.appendChild(metaImage);
-  head.appendChild(metaDescription);
+  // head.appendChild(metaUrl);
+  // head.appendChild(metaTitle);
+  // head.appendChild(metaImage);
+  // head.appendChild(metaDescription);
+  head.insertBefore(metaUrl, head.children[0]);
+  head.insertBefore(metaTitle, head.children[0]);
+  head.insertBefore(metaImage, head.children[0]);
+  head.insertBefore(metaDescription, head.children[0]);
 }
 
 function setOpenGraphText(title, description) {
