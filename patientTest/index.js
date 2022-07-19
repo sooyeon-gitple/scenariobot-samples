@@ -182,7 +182,7 @@ Gitple('onMessage', (message) => {
 
 function showResult(testResult) {
   console.log(2222, testResult)
-  this.setOpenGraph(testResult);
+  // this.setOpenGraph(testResult);
 
   const startBlock = document.querySelector('.bad-customer-start');
   if (startBlock) {
