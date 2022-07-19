@@ -25,7 +25,7 @@ function windowLoaded() {
 
 function copyPageUrl() {
   const tempInput = document.createElement('input'),
-        text = window.location.pathname + '?type=share' ;
+        text = window.location.href + '?type=share' ;
 
   document.body.appendChild(tempInput);
 

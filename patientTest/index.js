@@ -175,13 +175,15 @@ Gitple('onMessage', (message) => {
 
 function showResult(testResult) {
 
-  // Check local
   let origin =  window.location.origin;
-  if (window.location.origin === 'file://') {
-   origin = window.location.pathname;
+  if (origin === 'file://') { // If run in local html file
+    const urlArr = window.location.pathname.split('/');
+    origin = urlArr.slice(0, urlArr.length - 2).join('/');
+    window.location.href = origin + '/patienttest/results/' + testResult + '/index.html';
+  } else {
+    window.location.href = origin + '/patienttest/results/' + testResult;
   }
 
-  window.location.href = origin + '/patienttest/results/' + testResult;
 
   // this.setOpenGraph(testResult);
 
