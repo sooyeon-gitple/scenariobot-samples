@@ -11,9 +11,6 @@ let testResult = null; // Number(1 ~ 5)
 
 
 
-// if (isShared) {
-//   // window.location.href =  window.location.origin + '/static/patient_test';
-// }
 
 if (window.addEventListener) {
   window.addEventListener('load', windowLoaded, false);
@@ -61,28 +58,15 @@ function windowLoaded() {
 
 	isShared = getUrlParam('type') === 'share';
   testResult = getUrlParam('result');
-  console.log(1111)
-	console.log('>>>type :', isShared);
-  console.log('>>>testResult :', testResult);
 
 
   if (isShared && testResult) {
     setOpenGraphContents();
-    // const { ogTitle, ogDesc, ogImg, ogUrl } = getOpenGraphText(testResult);
-    // console.log( ogTitle,'|', ogDesc,'|', ogImg,'|', ogUrl )
-
-    // const head = document.querySelector('head');
-    // const metaUrl = document.createElement('meta')
-    // metaUrl.setAttribute('property', 'og:url')
-    // metaUrl.setAttribute('content', ogUrl);
-
-    // head.appendChild(metaUrl);
-
-
   }
   if (testResult) {
     showResult(testResult);
   }
+
 }
 
 
@@ -114,7 +98,7 @@ function getTestResult(result) {
 
 function copyPageUrl() {
   const tempInput = document.createElement('input'),
-        text = window.location.href + '?type=share' + '&result='+ testResult;
+        text = window.location.pathname + '?type=share' + '&result='+ testResult;
 
   document.body.appendChild(tempInput);
 
@@ -128,16 +112,7 @@ function copyPageUrl() {
 }
 
 function goToMain() {
-  isShared = getUrlParam('type') === 'share';
-  if (isShared) {
-    window.location = './index.html?type=share';
-  } else {
-    './index.html';
-  }
-
-  console.log(4444, isShared, testResult)
-  // const url = window.location.origin + '/static/patient_test';
-  // window.location = url;
+  window.location = './index.html';
 }
 
 function goToGitpleChat() {
@@ -148,7 +123,10 @@ function goToGitpleChat() {
 
 function setOpenGraphContents() {
   const { ogUrl, ogTitle, ogImg, ogDesc } = getOpenGraphText(testResult);
-  console.log( ogTitle,'|', ogDesc,'|', ogImg,'|', ogUrl )
+  console.log( ogTitle,'|', ogDesc,'|', ogImg,'|', ogUrl );
+
+  //TODO: setOpenGraph
+
   const head = document.querySelector('head');
 
   const metaUrl = document.createElement('meta')
@@ -177,18 +155,18 @@ function setOpenGraphContents() {
   head.insertBefore(metaDescription, head.children[0]);
 }
 
-function setOpenGraphText(title, description) {
-  // const ogTitle = document.querySelector('meta[property="og:title"]'),
-  //       ogDesc = document.querySelector('meta[property="og:description"]');
+// function setOpenGraphText(title, description) {
+//   // const ogTitle = document.querySelector('meta[property="og:title"]'),
+//   //       ogDesc = document.querySelector('meta[property="og:description"]');
 
-  // ogTitle.setAttribute('content', title);
-  // ogDesc.setAttribute('content', description);
-}
+//   // ogTitle.setAttribute('content', title);
+//   // ogDesc.setAttribute('content', description);
+// }
 
-function setOpenGraphImg(testResult) {
-  // const ogImg = document.querySelector('meta[property="og:title"]');
-  // ogImg.setAttribute('src','./results/images/og_' + testResult + '.png');
-}
+// function setOpenGraphImg(testResult) {
+//   // const ogImg = document.querySelector('meta[property="og:title"]');
+//   // ogImg.setAttribute('src','./results/images/og_' + testResult + '.png');
+// }
 
 
 Gitple('onMessage', (message) => {
@@ -232,29 +210,29 @@ function showResult(testResult) {
   Gitple('close');
 }
 
-function setOpenGraph(testResult){
-  console.log(3333, testResult)
+// function setOpenGraph(testResult){
+//   console.log(3333, testResult)
 
-  switch(testResult) {
-    case '1':
-      setOpenGraphText('당신의 인내력: 세살아기 등급', '이러한 인내력으로는 세상을 살아갈 수 없어요!');
-      break;
-    case '2':
-      setOpenGraphText('당신의 인내력: 만년다이어터 등급', '이정도면… 유리멘탈…');
-      break;
-    case '3':
-      setOpenGraphText('당신의 인내력: 어린이 등급', '이 험난한 사회, 어떻게 버티시려구요?');
-      break;
-    case '4':
-      setOpenGraphText('당신의 인내력: 회사원 등급', '사회생활하는데 문제는 없겠는걸요?');
-      break;
-    case '5':
-      setOpenGraphText('당신의 인내력: 부처상 등급', '당신은 그 어떤 진상도 버텨낼 수 있으리!');
-      break;
-  }
+//   switch(testResult) {
+//     case '1':
+//       setOpenGraphText('당신의 인내력: 세살아기 등급', '이러한 인내력으로는 세상을 살아갈 수 없어요!');
+//       break;
+//     case '2':
+//       setOpenGraphText('당신의 인내력: 만년다이어터 등급', '이정도면… 유리멘탈…');
+//       break;
+//     case '3':
+//       setOpenGraphText('당신의 인내력: 어린이 등급', '이 험난한 사회, 어떻게 버티시려구요?');
+//       break;
+//     case '4':
+//       setOpenGraphText('당신의 인내력: 회사원 등급', '사회생활하는데 문제는 없겠는걸요?');
+//       break;
+//     case '5':
+//       setOpenGraphText('당신의 인내력: 부처상 등급', '당신은 그 어떤 진상도 버텨낼 수 있으리!');
+//       break;
+//   }
 
-  setOpenGraphImg(testResult);
-}
+//   setOpenGraphImg(testResult);
+// }
 
 
 const getOpenGraphText = (id /*: string = ''*/) => {
