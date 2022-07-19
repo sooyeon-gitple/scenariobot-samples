@@ -1,26 +1,13 @@
-<!-- <!DOCTYPE HTML>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://api-sample.gitple.io/static/img/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://api-sample.gitple.io/static/img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://api-sample.gitple.io/static/img/favicon-32x32.png">
-  </head>
-  <body>
-		<h1> SF 영화 퀴즈 페이지 </h1>
-	</body>
-</html> -->
 <!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="<%= ogUrl %>"/>
+    <!-- <meta property="og:url" content="<%= ogUrl %>"/>
     <meta property="og:title" content="<%= ogTitle %>"/>
     <meta property="og:image" content="<%= ogImg %>"/>
-    <meta property="og:description" content="<%= ogDesc %>"/>
+    <meta property="og:description" content="<%= ogDesc %>"/> -->
     <meta property="og:site_name" content="SF 영화 테스트"/>
     <meta property="og:locale" content="en_US"/>
     <!-- favicon -->
@@ -36,9 +23,19 @@
 
   </head>
   <body>
-
     <section class="sf-quiz">
-
+      <div class="goto-gitple-header">
+        <span>
+          이 퀴즈는 채팅 상담 솔루션 <br> 깃플챗의 챗봇으로 제작하였습니다
+        </span>
+        <button>
+          깃플챗 방문하기
+        </button>
+      </div>
+      <img class="main-img" src="./images/main.png" alt="SF 영화 퀴즈">
+      <button class="start-quiz yellow-round-button">
+        퀴즈 도전하기
+      </button>
     </section>
 
     <!-- The actual snackbar -->
