@@ -237,7 +237,7 @@ function showResult(testResult) {
 
 const getOpenGraphText = (id /*: string = ''*/) => {
 
-  const baseSrc =  window.location.origin + window.location.pathname + '/results/images';//'https://api-sample.gitple.io/static/img',
+  const baseSrc =  window.location.origin + window.location.pathname + 'results/images';//'https://api-sample.gitple.io/static/img',
         baseUrl =  window.location.origin + window.location.pathname; //'./results';//'https://api-sample.gitple.io/static/patient_test';
 
   switch(id) {
