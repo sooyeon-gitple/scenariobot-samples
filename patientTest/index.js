@@ -177,12 +177,10 @@ function showResult(testResult) {
 
   // Check local
   let origin =  window.location.origin;
-  //TODO: pathname without last file name
   if (window.location.origin === 'file://') {
-   origin = window.location.pathname
+   origin = window.location.pathname;
   }
-  const origin = window.location.origin === 'file://' ?  window.location.pathname : window.location.origin;
-//TODO: pathname without last file name
+
   window.location.href = origin + '/patienttest/results/' + testResult;
 
   // this.setOpenGraph(testResult);
