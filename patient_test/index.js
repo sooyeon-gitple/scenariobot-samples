@@ -179,9 +179,9 @@ function showResult(testResult) {
   if (origin === 'file://') { // If run in local html file
     const urlArr = window.location.pathname.split('/');
     origin = urlArr.slice(0, urlArr.length - 2).join('/');
-    window.location.href = origin + '/patienttest/results/' + testResult + '/index.html';
+    window.location.href = origin + '/patient-test/results/' + testResult + '/index.html';
   } else {
-    window.location.href = origin + '/patienttest/results/' + testResult;
+    window.location.href = origin + '/patient-test/results/' + testResult;
   }
 
 
