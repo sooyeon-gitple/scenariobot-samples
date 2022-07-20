@@ -10,7 +10,7 @@ body {
 }
 
 section.sf-quiz {
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.4);
   max-width: 500px;
   height: 100vh;
   margin: 0 auto;
