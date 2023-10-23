@@ -159,7 +159,7 @@
 			Gitple("onMessage", (message) => {
         // 평가사 연결 이벤트 처리
 				if (message.type === 'callAppraiser') {
-					location.href = `tel:${message.callNum}`;
+					location.href = `tel:${message.data.callNum}`;
 				}
 			});
 		</script>
