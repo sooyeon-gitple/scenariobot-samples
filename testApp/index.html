@@ -99,15 +99,21 @@
 			!function(){function e(){function e(){var e=t.contentDocument,a=e.createElement("script");a.type="text/javascript",a.async=!0,a.src=window[n]&&window[n].url?window[n].url+"/inapp-web/gitple-loader.js":"https://app.gitple.io/inapp-web/gitple-loader.js",a.charset="UTF-8",e.head&&e.head.appendChild(a)}var t=document.getElementById(a);t||((t=document.createElement("iframe")).id=a,t.style.display="none",t.style.width="0",t.style.height="0",t.addEventListener?t.addEventListener("load",e,!1):t.attachEvent?t.attachEvent("onload",e):t.onload=e,document.body.appendChild(t))}var t=window,n="GitpleConfig",a="gitple-loader-frame";if(!window.Gitple){document;var i=function(){i.ex&&i.ex(arguments)};i.q=[],i.ex=function(e){i.processApi?i.processApi.apply(void 0,e):i.q&&i.q.push(e)},window.Gitple=i,t.attachEvent?t.attachEvent("onload",e):t.addEventListener("load",e,!1)}}();
 			Gitple('boot');
 
+      function handleGitplechat(showHide) {
+        if (window.Gitple) {
+          window.Gitple(showHide);
+        }
+      }
+
 			// 1. link node 진입 이벤트
 			Gitple("onLink", (linkData) => {
         if (linkData.data.type === 'confirmDepositLogin') {
           // 2. 로그인 block show (로그인 페이지 진입한 것 처럼 보이도록)
           loginBlock.classList.add('show');
           
-          // 채팅앱 hide(모바일 테스트 용)
-          Gitple('hide');
-  
+          // 채팅앱 close(모바일 테스트 용)
+          handleGitplechat('close');
+
           if (linkData) {
             confirmDepositInfo = linkData;
           }
@@ -141,8 +147,8 @@
   
               confirmDepositInfo = null;
 
-              // 채팅앱 show(모바일 테스트 용)
-              Gitple('show');
+              // 채팅앱 open(모바일 테스트 용)
+              handleGitplechat('open');
             });
           }
         }
