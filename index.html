@@ -38,23 +38,49 @@
       !function(){function e(){function e(){var e=t.contentDocument,a=e.createElement("script");a.type="text/javascript",a.async=!0,a.src=window[n]&&window[n].url?window[n].url+"/inapp-web/gitple-loader.js":"https://app.gitple.io/inapp-web/gitple-loader.js",a.charset="UTF-8",e.head&&e.head.appendChild(a)}var t=document.getElementById(a);t||((t=document.createElement("iframe")).id=a,t.style.display="none",t.style.width="0",t.style.height="0",t.addEventListener?t.addEventListener("load",e,!1):t.attachEvent?t.attachEvent("onload",e):t.onload=e,document.body.appendChild(t))}var t=window,n="GitpleConfig",a="gitple-loader-frame";if(!window.Gitple){document;var i=function(){i.ex&&i.ex(arguments)};i.q=[],i.ex=function(e){i.processApi?i.processApi.apply(void 0,e):i.q&&i.q.push(e)},window.Gitple=i,t.attachEvent?t.attachEvent("onload",e):t.addEventListener("load",e,!1)}}();
       Gitple('boot');
 
-      </script> -->
+		</script> -->
 
 		<script>
 
-      const extra = {
-        email:'nana@email.com',
-        name:'nananuna',
-        meta:{
-          catName:'nana'
-        },
-        group:'123'
-      };
+      // const extra = {
+      //   email:'nana@email.com',
+      //   name:'nananuna',
+      //   meta:{
+      //     catName:'nana'
+      //   },
+      //   group:'123'
+      // };
+
+			// window.GitpleKakao = {
+			// 	uuid: "@mdy46rmdota1oo2", //'@' + 검색용 아이디
+			// 	extra: JSON.stringify(extra), // text(1000)
+			// };
+
+			const extra = {
+      gpType: 'sp:7092',
+      gpData: {
+        user: {
+          name: '김통테',
+          phone: '01087498013',
+          group: '0000000000',
+          userFields: {
+            fcnumber: '0000000000',
+            cnslid: '10000284',
+            aplrdob: '19971013',
+            aplrsxds: '남',
+            inflpath: 'direct',
+            inflpathdtl: '보장분석/자녀보장',
+            intro1: '안녕하세요. 삼성생명 다이렉트 채널입니다.',
+            intro2: 'https://api.t.drt.samsunglife.k....geAnalysisDirectInfoView'
+          }
+        }
+      }
+    };
 
 			window.GitpleKakao = {
-				uuid: "@mdy46rmdota1oo2", //'@' + 검색용 아이디
-				extra: JSON.stringify(extra), // text(1000)
-			};
+      uuid: "@mtyx7ik8mtk4ooy", // 삼성생명 테스트
+      extra: JSON.stringify(extra), // text(1000)
+    };
 
 			(function () {
 				function gitpleKakaoTalkLoader() {
