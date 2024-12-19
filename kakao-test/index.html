@@ -1,159 +1,186 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Gitple Integration Test</title>
-    <style>
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(to bottom, #f9f7f7, #dbe2ef);
-            color: #112d4e;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-        }
+	<head>
+		<title>Gitple Integration Test</title>
+		<style>
+			body {
+				font-family: "Roboto", Arial, sans-serif;
+				background: linear-gradient(to bottom, #f9f7f7, #dbe2ef);
+				color: #112d4e;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				height: 100vh;
+			}
 
-        h1 {
-            margin-top: 20px;
-            color: #3f72af;
-            text-shadow: 2px 2px 4px #fff;
-        }
+			h1 {
+				margin-top: 20px;
+				color: #3f72af;
+				text-shadow: 2px 2px 4px #fff;
+			}
 
-        p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+			p {
+				font-size: 18px;
+				margin-bottom: 30px;
+			}
 
-        #kakao-launcher-input {
-            background-color: #ffffffdd;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 80%;
-            max-width: 800px;
-            text-align: left;
-            animation: fadeIn 0.8s;
-        }
+			#kakao-launcher-input {
+				background-color: #ffffffdd;
+				padding: 20px;
+				border-radius: 12px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+				width: 80%;
+				max-width: 800px;
+				text-align: left;
+				animation: fadeIn 0.8s;
+			}
 
-        label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-        }
+			label {
+				font-weight: bold;
+				display: block;
+				margin-bottom: 8px;
+			}
 
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 2px solid #3f72af;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
+			input,
+			textarea {
+				width: 100%;
+				padding: 12px;
+				margin-bottom: 20px;
+				border: 2px solid #3f72af;
+				border-radius: 8px;
+				font-size: 16px;
+				box-sizing: border-box;
+			}
 
-        textarea {
-            height: 250px;
-            resize: vertical;
-        }
+			textarea {
+				height: 250px;
+				resize: vertical;
+			}
 
-        #char-counter {
-            text-align: right;
-            font-size: 14px;
-            color: #888;
-        }
+			#char-counter {
+				text-align: right;
+				font-size: 14px;
+				color: #888;
+			}
 
-        .error {
-            border-color: red;
-            color: red;
-        }
+			.error {
+				border-color: red;
+				color: red;
+			}
 
-        #kakao-launcher {
-            z-index: 9999989;
-            display: block;
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-        }
+			#kakao-launcher {
+				z-index: 9999989;
+				display: block;
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+			}
 
-        #kakao-launcher-icon {
-            cursor: pointer;
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
-            background: radial-gradient(circle, #ffe066, #f9a602);
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: bounce 1.5s infinite;
-        }
+			#kakao-launcher-icon {
+				cursor: pointer;
+				width: 60px;
+				height: 60px;
+				border-radius: 30px;
+				background: radial-gradient(circle, #ffe066, #f9a602);
+				box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				animation: bounce 1.5s infinite;
+			}
 
-        #kakao-launcher-custom-icon {
-            width: 50%;
-            height: auto;
-        }
+			#kakao-launcher-custom-icon {
+				width: 50%;
+				height: auto;
+			}
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
+			.hachiware-padak {
+				position: absolute;
+				bottom: 10px;
+				left: 20px;
+				background-image: url("./bg_foot_03.png");
+				width: 150px;
+				height: 170px;
+				background-size: 221%; /* Adjust based on total image width */
+				background-position: 0 0; /* Initial position */
+				animation: toggleImage 1s steps(2) infinite;
+			}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+			@keyframes toggleImage {
+				0% {
+					background-position: -150px 0;
+				}
+				100% {
+					background-position: 160px 0; /* Shift to the second image */
+				}
+			}
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-            }
+			@keyframes bounce {
+				0%,
+				20%,
+				50%,
+				80%,
+				100% {
+					transform: translateY(0);
+				}
+				40% {
+					transform: translateY(-10px);
+				}
+				60% {
+					transform: translateY(-5px);
+				}
+			}
 
-            #kakao-launcher {
-                right: 10px;
-                bottom: 10px;
-            }
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
 
-            #kakao-launcher-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
-            }
+			@media (max-width: 768px) {
+				body {
+					font-size: 14px;
+				}
 
-            #kakao-launcher-input {
-                width: 90%;
-                padding: 15px;
-            }
+				#kakao-launcher {
+					right: 10px;
+					bottom: 10px;
+				}
 
-            textarea {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
-<h1>Gitple Integration Test</h1>
-<p>Welcome to the most adorable test page ever!</p>
+				#kakao-launcher-icon {
+					width: 50px;
+					height: 50px;
+					border-radius: 25px;
+				}
 
-<div id="kakao-launcher-input">
-  <label for="uuid">UUID: </label>
-  <input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
-    <br><br>
-    <label for="extra">Extra: </label>
-    <br>
-    <textarea data-field="extra" id="extra-field" placeholder="Enter Extra Data (JSON format)" rows="30" cols="100">{
+				#kakao-launcher-input {
+					width: 90%;
+					padding: 15px;
+				}
+
+				textarea {
+					height: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Gitple Integration Test</h1>
+		<p>Welcome to the most adorable test page ever!</p>
+
+		<div id="kakao-launcher-input">
+			<label for="uuid">UUID: </label>
+			<input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
+			<br /><br />
+			<label for="extra">Extra: </label>
+			<br />
+			<textarea data-field="extra" id="extra-field" placeholder="Enter Extra Data (JSON format)" rows="30" cols="100">
+{
       "gpType": "sp:7092",
       "gpData": {
         "user": {
@@ -174,91 +201,109 @@
           }
         }
       }
-    }</textarea>
-    <div id="char-counter">0 / 1000</div>
-    <br>
-</div>
+    }</textarea
+			>
+			<div id="char-counter">0 / 1000</div>
+			<br />
+		</div>
 
-<script>
-    function appendHiddenInput(form, name, value) {
-        const hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", name);
-        hiddenField.setAttribute("value", value);
-        form.appendChild(hiddenField);
-    }
+		<div class="hachiware-padak"></div>
 
-    function openKakaotalk() {
-        const kakaoForm = document.createElement("form");
-        kakaoForm.setAttribute("method", "post");
-        kakaoForm.setAttribute("action", "https://bizmessage.kakao.com/chat/open");
-        kakaoForm.setAttribute("target", "kakaoView");
+		<script>
+			function appendHiddenInput(form, name, value) {
+				const hiddenField = document.createElement("input");
+				hiddenField.setAttribute("type", "hidden");
+				hiddenField.setAttribute("name", name);
+				hiddenField.setAttribute("value", value);
+				form.appendChild(hiddenField);
+			}
 
-        document.querySelectorAll("#kakao-launcher-input [data-field]").forEach(input => {
-            if (input.dataset.field === "extra") {
-                try {
-                    const parsedValue = JSON.parse(input.value);
-                    appendHiddenInput(kakaoForm, input.dataset.field, JSON.stringify(parsedValue));
-                } catch (error) {
-                    console.error("Invalid JSON in Extra Data:", error);
-                    return;
-                }
-            } else {
-                appendHiddenInput(kakaoForm, input.dataset.field, input.value);
-            }
-        });
+			function openKakaotalk() {
+				const kakaoForm = document.createElement("form");
+				kakaoForm.setAttribute("method", "post");
+				kakaoForm.setAttribute("action", "https://bizmessage.kakao.com/chat/open");
+				kakaoForm.setAttribute("target", "kakaoView");
 
-        document.body.appendChild(kakaoForm);
-        kakaoForm.submit();
-    }
+				document.querySelectorAll("#kakao-launcher-input [data-field]").forEach((input) => {
+					if (input.dataset.field === "extra") {
+						try {
+							const parsedValue = JSON.parse(input.value);
+							appendHiddenInput(kakaoForm, input.dataset.field, JSON.stringify(parsedValue));
+						} catch (error) {
+							console.error("Invalid JSON in Extra Data:", error);
+							return;
+						}
+					} else {
+						appendHiddenInput(kakaoForm, input.dataset.field, input.value);
+					}
+				});
 
-    function createLauncher() {
-        const launcherContainer = document.createElement("div");
-        launcherContainer.id = "kakao-launcher";
+				document.body.appendChild(kakaoForm);
+				kakaoForm.submit();
+			}
 
-        const launcherIcon = document.createElement("div");
-        launcherIcon.id = "kakao-launcher-icon";
+			function createLauncher() {
+				const launcherContainer = document.createElement("div");
+				launcherContainer.id = "kakao-launcher";
 
-        const customIcon = document.createElement("img");
-        customIcon.id = "kakao-launcher-custom-icon";
-        customIcon.setAttribute("src", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk.png");
-        customIcon.setAttribute("srcset", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk%402x.png 2x");
+				const launcherIcon = document.createElement("div");
+				launcherIcon.id = "kakao-launcher-icon";
 
-        launcherIcon.appendChild(customIcon);
-        launcherContainer.appendChild(launcherIcon);
+				const customIcon = document.createElement("img");
+				customIcon.id = "kakao-launcher-custom-icon";
+				customIcon.setAttribute("src", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk.png");
+				customIcon.setAttribute(
+					"srcset",
+					"https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk%402x.png 2x"
+				);
 
-        customIcon.addEventListener("click", openKakaotalk);
-        document.body.appendChild(launcherContainer);
-    }
+				launcherIcon.appendChild(customIcon);
+				launcherContainer.appendChild(launcherIcon);
 
-    function updateCharCounter() {
-        const textarea = document.getElementById("extra-field");
-        const counter = document.getElementById("char-counter");
-        const submitButton = document.querySelector("#kakao-launcher-icon img");
+				customIcon.addEventListener("click", openKakaotalk);
+				document.body.appendChild(launcherContainer);
+			}
 
-        const validateLength = () => {
-            const charCount = textarea.value.length;
-            counter.textContent = `${charCount} / 1000`;
+			function updateCharCounter() {
+				const textarea = document.getElementById("extra-field");
+				const counter = document.getElementById("char-counter");
+				const submitButton = document.querySelector("#kakao-launcher-icon img");
 
-            if (charCount > 1000) {
-                textarea.classList.add("error");
-                submitButton.style.pointerEvents = "none";
-                submitButton.style.opacity = "0.5";
-            } else {
-                textarea.classList.remove("error");
-                submitButton.style.pointerEvents = "auto";
-                submitButton.style.opacity = "1";
-            }
-        };
+				const validateLength = () => {
+					const charCount = textarea.value.length;
+					counter.textContent = `${charCount} / 1000`;
 
-        textarea.addEventListener("input", validateLength);
-        validateLength(); // Initial validation for pre-filled content
-    }
+					if (charCount > 1000) {
+						textarea.classList.add("error");
+						submitButton.style.pointerEvents = "none";
+						submitButton.style.opacity = "0.5";
+					} else {
+						textarea.classList.remove("error");
+						submitButton.style.pointerEvents = "auto";
+						submitButton.style.opacity = "1";
+					}
+				};
 
-    window.addEventListener("load", () => {
-        createLauncher();
-        updateCharCounter();
-    });
-</script>
-</body>
+				textarea.addEventListener("input", validateLength);
+				validateLength(); // Initial validation for pre-filled content
+			}
+
+			function toggleHachiwareImage() {
+				const hachiware = document.querySelector(".hachiware-padak");
+				let currentImage = 1;
+
+				setInterval(() => {
+					currentImage = currentImage === 1 ? 2 : 1;
+					const positionX = (currentImage - 1) * -50; // Adjust for your sprite setup
+					hachiware.style.backgroundPosition = `${positionX}% 0`;
+				}, 500); // Change every 500ms
+			}
+
+			window.addEventListener("load", () => {
+				createLauncher();
+				updateCharCounter();
+				// toggleHachiwareImage();
+			});
+		</script>
+	</body>
 </html>
