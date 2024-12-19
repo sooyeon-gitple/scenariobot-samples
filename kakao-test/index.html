@@ -113,7 +113,7 @@
 					background-position: -150px 0;
 				}
 				100% {
-					background-position: 160px 0; /* Shift to the second image */
+					background-position: 153px 0; /* Shift to the second image */
 				}
 			}
 
@@ -141,6 +141,45 @@
 					opacity: 1;
 				}
 			}
+
+
+			.bubble {
+				position: absolute;
+				bottom: 200px;
+				left: 50px;
+				padding: 10px 15px;
+				background-color: #fff;
+				border: 2px solid #3f72af;
+				border-radius: 10px;
+				box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+				font-size: 14px;
+				color: #112d4e;
+				animation: fadeInBubble 0.3s ease-in-out;
+			}
+
+			.bubble::after {
+				content: "";
+				position: absolute;
+				bottom: -10px;
+				left: 20px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 10px 10px 0 10px;
+				border-color: #fff transparent transparent transparent;
+			}
+
+			@keyframes fadeInBubble {
+				from {
+					opacity: 0;
+					transform: scale(0.8);
+				}
+				to {
+					opacity: 1;
+					transform: scale(1);
+				}
+			}
+
 
 			@media (max-width: 768px) {
 				body {
@@ -288,21 +327,30 @@
 				validateLength(); // Initial validation for pre-filled content
 			}
 
-			function toggleHachiwareImage() {
-				const hachiware = document.querySelector(".hachiware-padak");
-				let currentImage = 1;
+			const bubbleMessages = ["😊", "🐱", " 🐾", "🍜", "😄" ];
+			function showBubble(message) {
+				// Create bubble element
+				const bubble = document.createElement("div");
+				bubble.className = "bubble";
+				bubble.textContent = message;
 
-				setInterval(() => {
-					currentImage = currentImage === 1 ? 2 : 1;
-					const positionX = (currentImage - 1) * -50; // Adjust for your sprite setup
-					hachiware.style.backgroundPosition = `${positionX}% 0`;
-				}, 500); // Change every 500ms
+				// Append to body
+				document.body.appendChild(bubble);
+
+				// Automatically remove the bubble after 3 seconds
+				setTimeout(() => {
+					bubble.remove();
+				}, 3000);
 			}
+
+			document.querySelector(".hachiware-padak").addEventListener("click", () => {
+				const randomMessage = bubbleMessages[Math.floor(Math.random() * bubbleMessages.length)];
+				showBubble(randomMessage);
+			});
 
 			window.addEventListener("load", () => {
 				createLauncher();
 				updateCharCounter();
-				// toggleHachiwareImage();
 			});
 		</script>
 	</body>
