@@ -3,6 +3,61 @@
 <head>
     <title>Gitple Integration Test</title>
     <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(to bottom, #f9f7f7, #dbe2ef);
+            color: #112d4e;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #3f72af;
+            text-shadow: 2px 2px 4px #fff;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        #kakao-launcher-input {
+            background-color: #ffffffdd;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+            animation: fadeIn 0.8s;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #3f72af;
+            border-radius: 8px;
+            font-size: 16px;
+        		box-sizing: border-box;
+        }
+
+        textarea {
+            /* height: 550px; */
+            resize: vertical;
+        }
+
         #kakao-launcher {
             z-index: 9999989;
             display: block;
@@ -13,46 +68,66 @@
 
         #kakao-launcher-icon {
             cursor: pointer;
-            width: 60px;
-            height: 60px;
-            border-radius: 30px;
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.12s;
-            padding: 0;
-            animation: kakao-launcher-appear 0.5s ease;
+            width: 120px;
+            height: 120px;
+            border-radius: 80px;
+            background: radial-gradient(circle, #ffe066, #f9a602);
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 1.5s infinite;
         }
 
         #kakao-launcher-custom-icon {
-            cursor: pointer;
-            transition: all 0.12s;
-            padding: 0;
-            display: inline;
-            max-width: 100%;
+            width: 50%;
             height: auto;
         }
 
-        @keyframes kakao-launcher-appear {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
             }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
 
-            100% {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
                 opacity: 1;
-                transform: scale(1);
             }
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
             #kakao-launcher {
                 right: 10px;
                 bottom: 10px;
             }
 
             #kakao-launcher-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 25px;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            #kakao-launcher-input {
+                width: 90%;
+                padding: 15px;
+            }
+
+            textarea {
+                /* height: 200px; */
             }
         }
     </style>
@@ -60,14 +135,13 @@
 <body>
 <h1>Gitple Integration Test</h1>
 
-
 <div id="kakao-launcher-input">
-  <label for="uuid">UUID:(골뱅이 포함) </label>
+  <label for="uuid">UUID: </label>
 	<input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
     <br><br>
 		<label for="extra">Extra: </label>
 		<br>
-    <textarea data-field="extra" placeholder="Enter Extra Data (JSON format)" rows="30" cols="100">{
+    <textarea data-field="extra" placeholder="Enter Extra Data (JSON format)" rows="30" cols="200">{
       "gpType": "sp:7092",
       "gpData": {
         "user": {
