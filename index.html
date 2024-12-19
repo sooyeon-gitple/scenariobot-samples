@@ -1,224 +1,150 @@
 <!DOCTYPE HTML>
-<!-- <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://api-sample.gitple.io/static/img/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://api-sample.gitple.io/static/img/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://api-sample.gitple.io/static/img/favicon-32x32.png">
-  </head>
-  <body>
-		<h1>Gitple Scenario bots Samples</h1>
+<html>
+<head>
+    <title>Gitple Integration Test</title>
+    <style>
+        #kakao-launcher {
+            z-index: 9999989;
+            display: block;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+        }
 
-		<ul>
-			<li>
-				<a href="./patient-test/index.html">
-					인내력 테스트
-				</a>
-			</li>
-			<li>
-				<a href="./sf-quiz/index.html">
-					SF 영화 퀴즈 봇
-				</a>
-			</li>
-	 </ul>
-	</body>
-</html>
- -->
+        #kakao-launcher-icon {
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.12s;
+            padding: 0;
+            animation: kakao-launcher-appear 0.5s ease;
+        }
 
- <html>
-	<head>
-		<title>Gitple Integration Test</title>
-	</head>
-	<body>
-		<h1>Gitple Integration Test</h1>
-		<p>Gitple Integration Test Page</p>
-		<!-- <script>
-      window.GitpleConfig = {"appCode":"0gB8bTBoPOE6lWnleDun9wRGIeef11","url":"https://devnhcard.enterprise.gitple.io"};
-      !function(){function e(){function e(){var e=t.contentDocument,a=e.createElement("script");a.type="text/javascript",a.async=!0,a.src=window[n]&&window[n].url?window[n].url+"/inapp-web/gitple-loader.js":"https://app.gitple.io/inapp-web/gitple-loader.js",a.charset="UTF-8",e.head&&e.head.appendChild(a)}var t=document.getElementById(a);t||((t=document.createElement("iframe")).id=a,t.style.display="none",t.style.width="0",t.style.height="0",t.addEventListener?t.addEventListener("load",e,!1):t.attachEvent?t.attachEvent("onload",e):t.onload=e,document.body.appendChild(t))}var t=window,n="GitpleConfig",a="gitple-loader-frame";if(!window.Gitple){document;var i=function(){i.ex&&i.ex(arguments)};i.q=[],i.ex=function(e){i.processApi?i.processApi.apply(void 0,e):i.q&&i.q.push(e)},window.Gitple=i,t.attachEvent?t.attachEvent("onload",e):t.addEventListener("load",e,!1)}}();
-      Gitple('boot');
+        #kakao-launcher-custom-icon {
+            cursor: pointer;
+            transition: all 0.12s;
+            padding: 0;
+            display: inline;
+            max-width: 100%;
+            height: auto;
+        }
 
-		</script> -->
+        @keyframes kakao-launcher-appear {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
 
-		<script>
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
-      // const extra = {
-      //   email:'nana@email.com',
-      //   name:'nananuna',
-      //   meta:{
-      //     catName:'nana'
-      //   },
-      //   group:'123'
-      // };
+        @media (max-width: 768px) {
+            #kakao-launcher {
+                right: 10px;
+                bottom: 10px;
+            }
 
-			const extra = {
-      gpType: 'sp:7092',
-      gpData: {
-        user: {
-          name: '김통테2',
-          phone: '01087498013',
-          group: '0000000000',
-          userFields: {
-            fcnumber: '0000000000',
-            cnslid: '10000284',
-            aplrdob: '19971013',
-            aplrsxds: '남',
-            inflpath: 'direct',
-            inflpathdtl: '보장분석/자녀보장',
-            intro1: '안녕하세요. 삼성생명 다이렉트 채널입니다.',
-            intro2: 'https://api.t.drt.samsunglife.k....geAnalysisDirectInfoView',
-						notexistinuserfields: '자원에 없는 키',
-						notexistinuserfields2: '자원에 없는 키2',
+            #kakao-launcher-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Gitple Integration Test</h1>
+<p>Gitple Integration Test Page</p>
+
+<div id="kakao-launcher-input">
+  <label for="uuid">UUID: </label>
+	<input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
+    <br><br>
+		<label for="extra">Extra: </label>
+		<br>
+    <textarea data-field="extra" placeholder="Enter Extra Data (JSON format)" rows="30" cols="100">{
+      "gpType": "sp:7092",
+      "gpData": {
+        "user": {
+          "name": "김통테2",
+          "phone": "01087498013",
+          "group": "0000000000",
+          "userFields": {
+            "fcnumber": "0000000000",
+            "cnslid": "10000284",
+            "aplrdob": "19971013",
+            "aplrsxds": "남",
+            "inflpath": "direct",
+            "inflpathdtl": "보장분석/자녀보장",
+            "intro1": "안녕하세요. 삼성생명 다이렉트 채널입니다.",
+            "intro2": "https://api.t.drt.samsunglife.k....geAnalysisDirectInfoView",
+            "notexistinuserfields": "자원에 없는 키",
+            "notexistinuserfields2": "자원에 없는 키2"
           }
         }
       }
-    };
+    }</textarea>
+    <br>
+</div>
 
-		window.GitpleKakao = {
-				uuid: "@mdy46rmdota1oo2", //'@' + 검색용 아이디
-				extra: JSON.stringify(extra), // text(1000)
-			};
+<script>
+    function appendHiddenInput(form, name, value) {
+        const hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", name);
+        hiddenField.setAttribute("value", value);
+        form.appendChild(hiddenField);
+    }
 
-		// 	window.GitpleKakao = {
-    //   uuid: "@mtyx7ik8mtk4ooy", // 삼성생명 테스트
-    //   extra: JSON.stringify(extra), // text(1000)
-    // };
+    function openKakaotalk() {
+        const kakaoForm = document.createElement("form");
+        kakaoForm.setAttribute("method", "post");
+        kakaoForm.setAttribute("action", "https://bizmessage.kakao.com/chat/open");
+        kakaoForm.setAttribute("target", "kakaoView");
 
-			(function () {
-				function gitpleKakaoTalkLoader() {
-					openKakaotalk = function () {
-						const kakaoForm = document.createElement("form");
-						const gitpleKakao = window.GitpleKakao;
+        document.querySelectorAll("#kakao-launcher-input [data-field]").forEach(input => {
+            if (input.dataset.field === "extra") {
+                try {
+                    const parsedValue = JSON.parse(input.value);
+                    appendHiddenInput(kakaoForm, input.dataset.field, JSON.stringify(parsedValue));
+                } catch (error) {
+                    console.error("Invalid JSON in Extra Data:", error);
+                    return;
+                }
+            } else {
+                appendHiddenInput(kakaoForm, input.dataset.field, input.value);
+            }
+        });
 
-						if (!gitpleKakao || !gitpleKakao["uuid"]) {
-							console.warn("[GitpleKakao] window.GitpleKakao or GitpleKakao.uuid is undefined");
-							return;
-						}
+        document.body.appendChild(kakaoForm);
+        kakaoForm.submit();
+    }
 
-						kakaoForm.setAttribute("method", "post");
-						kakaoForm.setAttribute("action", "https://bizmessage.kakao.com/chat/open");
-						kakaoForm.setAttribute("target", "kakaoView");
+    function createLauncher() {
+        const launcherContainer = document.createElement("div");
+        launcherContainer.id = "kakao-launcher";
 
-						let hiddenField = document.createElement("input");
-						hiddenField.setAttribute("type", "hidden");
-						hiddenField.setAttribute("name", "uuid");
-						hiddenField.setAttribute("value", window.GitpleKakao["uuid"]);
+        const launcherIcon = document.createElement("div");
+        launcherIcon.id = "kakao-launcher-icon";
 
-            let hiddenField2 = document.createElement("input");
-						hiddenField2.setAttribute("type", "hidden");
-            hiddenField2.setAttribute("name", "extra");
-						hiddenField2.setAttribute("value", window.GitpleKakao["extra"]);
+        const customIcon = document.createElement("img");
+        customIcon.id = "kakao-launcher-custom-icon";
+        customIcon.setAttribute("src", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk.png");
+        customIcon.setAttribute("srcset", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk%402x.png 2x");
 
-						kakaoForm.appendChild(hiddenField);
-            kakaoForm.appendChild(hiddenField2);
-						document.body.appendChild(kakaoForm);
+        launcherIcon.appendChild(customIcon);
+        launcherContainer.appendChild(launcherIcon);
 
-						// window.open("", "kakaoView");
-kakaoForm.submit();
+        customIcon.addEventListener("click", openKakaotalk);
+        document.body.appendChild(launcherContainer);
+    }
 
-					};
-
-					const kakaoLauncherId = "kakao-launcher";
-					const kakaoLauncherIconId = "kakao-launcher-icon";
-					const kakaoLauncherCustomIconId = "kakao-launcher-custom-icon";
-					const styleCss =
-						"#" +
-						kakaoLauncherId +
-						" {" +
-						"  z-index: 9999989; display: block; position: fixed; " +
-						" right: 20px !important;" +
-						" bottom: 20px;" +
-						"} " +
-						"#" +
-						kakaoLauncherIconId +
-						" {" +
-						"  cursor: pointer; " +
-						"  width: 60px; " +
-						"  height: 60px; " +
-						"  border-radius: 30px; " +
-						"  -moz-box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); " +
-						"  webkit-box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); " +
-						"  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1); " +
-						"  transition: all 0.12s; " +
-						"  padding: 0 !important; " +
-						"  -webkit-animation: kakao-launcher-appear .50s ease !important; " +
-						"  animation: kakao-launcher-appear .50s ease !important " +
-						"} " +
-						"#" +
-						kakaoLauncherCustomIconId +
-						" {" +
-						"  cursor: pointer; " +
-						"  transition: all 0.12s; " +
-						"  padding: 0 !important; " +
-						"  display: inline; " +
-						"  max-width: 100%; " +
-						"  height: auto;" +
-						"} " +
-						"@-webkit-keyframes kakao-launcher-appear { " +
-						"  0% { " +
-						"    opacity: 0; " +
-						"    -webkit-transform: scale(.5); " +
-						"    transform: scale(.5) " +
-						"  } " +
-						"  to { " +
-						"    opacity: 1; " +
-						"    -webkit-transform: scale(1); " +
-						"    transform: scale(1) " +
-						"  } " +
-						"} " +
-						"@keyframes kakao-launcher-appear { " +
-						"  0% { " +
-						"    opacity: 0; " +
-						"    -webkit-transform: scale(.5); " +
-						"    transform: scale(.5) " +
-						"  } " +
-						"  to { " +
-						"    opacity: 1; " +
-						"    -webkit-transform: scale(1); " +
-						"    transform: scale(1) " +
-						"  } " +
-						"} ";
-					let styleElmt = document.createElement("style");
-					styleElmt.type = "text/css";
-					styleElmt.innerHTML = styleCss;
-					document.head.appendChild(styleElmt);
-
-					const launcherContainer = document.createElement("div"),
-						launcherIcon = document.createElement("div");
-
-					launcherContainer.id = kakaoLauncherId;
-
-					// launcher icon
-					launcherIcon.id = kakaoLauncherIconId;
-					launcherIcon.addEventListener("click", openKakaotalk, false);
-
-					// launcher position
-					launcherContainer.style.left = "none";
-					launcherContainer.style.right = "20px";
-
-					// launcher custom icon
-					const customIcon = document.createElement("img");
-					customIcon.id = kakaoLauncherCustomIconId;
-					customIcon.setAttribute("src", "https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk.png");
-					customIcon.setAttribute(
-						"srcset",
-						"https://s3.ap-northeast-2.amazonaws.com/www.gitple.io/icon-kakao-talk%402x.png 2x"
-					);
-					launcherIcon.appendChild(customIcon);
-
-					launcherContainer.appendChild(launcherIcon);
-
-					if (document.body) {
-						document.body.appendChild(launcherContainer);
-					}
-				}
-
-				if (window.attachEvent) {
-					window.attachEvent("onload", gitpleKakaoTalkLoader);
-				} else {
-					window.addEventListener("load", gitpleKakaoTalkLoader, false);
-				}
-			})();
-		</script>
-	</body>
+    window.addEventListener("load", createLauncher);
+</script>
+</body>
 </html>
