@@ -1,14 +1,114 @@
-<!-- FILEPATH: /Users/sy/Documents/scenariobot-samples/index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>싱그러운 초록 테스트 페이지</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #cdeac0, #6ee7b7);
+            color: #155724;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            margin-top: 30px;
+            color: #0f5132;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1b4332;
+            font-weight: bold;
+            background-color: #95d5b2;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            background-color: #74c69d;
+            transform: scale(1.05);
+        }
+
+        .leaf-deco {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/616/616490.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+        }
+
+        .leaf-1 {
+            top: 20px;
+            left: 20px;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .leaf-2 {
+            top: 50px;
+            right: 30px;
+            animation: float 6s infinite ease-in-out reverse;
+        }
+
+        .leaf-3 {
+            bottom: 30px;
+            left: 40px;
+            animation: float 7s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>깃플챗 테스트 페이지</h1>
     <ul>
         <li><a href="kakao-test/index.html">카카오 연동 테스트</a></li>
     </ul>
+
+    <!-- Decorative Elements -->
+    <div class="leaf-deco leaf-1"></div>
+    <div class="leaf-deco leaf-2"></div>
+    <div class="leaf-deco leaf-3"></div>
 </body>
 </html>
