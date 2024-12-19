@@ -50,12 +50,23 @@
             border: 2px solid #3f72af;
             border-radius: 8px;
             font-size: 16px;
-        		box-sizing: border-box;
+            box-sizing: border-box;
         }
 
         textarea {
-            /* height: 550px; */
+            height: 250px;
             resize: vertical;
+        }
+
+        #char-counter {
+            text-align: right;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .error {
+            border-color: red;
+            color: red;
         }
 
         #kakao-launcher {
@@ -68,9 +79,9 @@
 
         #kakao-launcher-icon {
             cursor: pointer;
-            width: 120px;
-            height: 120px;
-            border-radius: 80px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
             background: radial-gradient(circle, #ffe066, #f9a602);
             box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
             display: flex;
@@ -116,9 +127,9 @@
             }
 
             #kakao-launcher-icon {
-                width: 80px;
-                height: 80px;
-                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                border-radius: 25px;
             }
 
             #kakao-launcher-input {
@@ -127,21 +138,22 @@
             }
 
             textarea {
-                /* height: 200px; */
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
 <h1>Gitple Integration Test</h1>
+<p>Welcome to the most adorable test page ever!</p>
 
 <div id="kakao-launcher-input">
   <label for="uuid">UUID: </label>
-	<input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
+  <input type="text" data-field="uuid" placeholder="Enter UUID" value="@mdy46rmdota1oo2" />
     <br><br>
-		<label for="extra">Extra: </label>
-		<br>
-    <textarea data-field="extra" placeholder="Enter Extra Data (JSON format)" rows="30" cols="200">{
+    <label for="extra">Extra: </label>
+    <br>
+    <textarea data-field="extra" id="extra-field" placeholder="Enter Extra Data (JSON format)" rows="30" cols="100">{
       "gpType": "sp:7092",
       "gpData": {
         "user": {
@@ -163,6 +175,7 @@
         }
       }
     }</textarea>
+    <div id="char-counter">0 / 1000</div>
     <br>
 </div>
 
@@ -218,7 +231,34 @@
         document.body.appendChild(launcherContainer);
     }
 
-    window.addEventListener("load", createLauncher);
+    function updateCharCounter() {
+        const textarea = document.getElementById("extra-field");
+        const counter = document.getElementById("char-counter");
+        const submitButton = document.querySelector("#kakao-launcher-icon img");
+
+        const validateLength = () => {
+            const charCount = textarea.value.length;
+            counter.textContent = `${charCount} / 1000`;
+
+            if (charCount > 1000) {
+                textarea.classList.add("error");
+                submitButton.style.pointerEvents = "none";
+                submitButton.style.opacity = "0.5";
+            } else {
+                textarea.classList.remove("error");
+                submitButton.style.pointerEvents = "auto";
+                submitButton.style.opacity = "1";
+            }
+        };
+
+        textarea.addEventListener("input", validateLength);
+        validateLength(); // Initial validation for pre-filled content
+    }
+
+    window.addEventListener("load", () => {
+        createLauncher();
+        updateCharCounter();
+    });
 </script>
 </body>
 </html>
